@@ -50,10 +50,10 @@ public class MainActivity2 extends AppCompatActivity implements Asynchtask {
             String nombreLugar = lugar.optString("nombre_lugar", "");
             String puntuacion = lugar.optString("puntuacion", "");
             String telefono = lugar.optString("telefono", "");
-            lugaresStringBuilder.append("Categoría: ").append(categoria).append("\n");
+            lugaresStringBuilder.append("Categoría Perteneciente: ").append(categoria).append("\n");
             lugaresStringBuilder.append("Nombre: ").append(nombreLugar).append("\n");
-            lugaresStringBuilder.append("puntuacion: ").append(puntuacion).append("\n");
-            lugaresStringBuilder.append("Teléfono: ").append(telefono).append("\n\n");
+            lugaresStringBuilder.append("Puntos de Servicio: ").append(puntuacion).append("\n");
+            lugaresStringBuilder.append("Tlf: ").append(telefono).append("\n\n");
         }
         // Muestra el resultado filtrado en el TextView
         txtBancos.setText("Información de lugares:\n" + lugaresStringBuilder.toString());
