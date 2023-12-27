@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import WebService.Asynchtask;
@@ -27,17 +28,18 @@ public class MainActivity2 extends AppCompatActivity implements Asynchtask {
 
         Map<String, String> datos = new HashMap<String, String>();
 
-        WebService ws= new
+        WebService ws = new
                 WebService("https://uealecpeterson.net/turismo/lugar_turistico/json_getlistadoGrid",
                 datos, MainActivity2.this, MainActivity2.this);
 
-        ws.execute("GET","Public-Merchant-Id","84e1d0de1fbf437e9779fd6a52a9ca18");
+        ws.execute("GET", "Public-Merchant-Id", "84e1d0de1fbf437e9779fd6a52a9ca18");
 
     }
 
+
     @Override
     public void processFinish(String result) throws JSONException {
-        Log.d("API_RESPONSE", result);
+        Log.d("API_RESPONSE", result);  // Imprime la respuesta en la consola
         TextView txtBancos = findViewById(R.id.txtLugaresturisticos);
         StringBuilder lugaresStringBuilder = new StringBuilder();
         JSONObject jsonResult = new JSONObject(result);
@@ -50,10 +52,10 @@ public class MainActivity2 extends AppCompatActivity implements Asynchtask {
             String telefono = lugar.optString("telefono", "");
             lugaresStringBuilder.append("Categoría: ").append(categoria).append("\n");
             lugaresStringBuilder.append("Nombre: ").append(nombreLugar).append("\n");
-            lugaresStringBuilder.append("Puntuacion: ").append(puntuacion).append("\n");
-            lugaresStringBuilder.append("Tlf: ").append(telefono).append("\n\n");
+            lugaresStringBuilder.append("puntuacion: ").append(puntuacion).append("\n");
+            lugaresStringBuilder.append("Teléfono: ").append(telefono).append("\n\n");
         }
-
+        // Muestra el resultado filtrado en el TextView
         txtBancos.setText("Información de lugares:\n" + lugaresStringBuilder.toString());
-    }
+}
 }
